@@ -1,0 +1,89 @@
+/* @import must be first (PostCSS requirement) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Lexend:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+/* class-based dark mode for Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* OpenDyslexic — self-hosted from /public/fonts/ */
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/fonts/OpenDyslexic-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/fonts/OpenDyslexic-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/fonts/OpenDyslexic-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/fonts/OpenDyslexic-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans:     "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display:  "Poppins", sans-serif;
+  --font-bengali:  "Noto Sans Bengali", sans-serif;
+  --font-dyslexic: "OpenDyslexic", sans-serif;
+
+  --color-primary:   #1D4ED8;
+  --color-secondary: #6D28D9;
+  --color-accent:    #F59E0B;
+
+  --radius-xl:  16px;
+  --radius-2xl: 24px;
+}
+
+@layer base {
+  body {
+    @apply font-sans antialiased;
+  }
+}
+
+.reading-container {
+  transition: all 0.3s ease;
+}
+
+.word-highlight {
+  @apply bg-yellow-200 dark:bg-yellow-800 rounded px-0.5 transition-all duration-150;
+}
+
+.line-focus-mask {
+  pointer-events: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  z-index: 40;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.reading-ruler {
+  pointer-events: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #F59E0B;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+  z-index: 50;
+}
